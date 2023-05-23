@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --font: 'Poppins', sans-serif;
+    --color-blue: #3635aa;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: rgb(6,210,156);
+    background: linear-gradient(118deg, rgba(6,210,156,1) 11%, rgba(114,67,216,1) 81%);
+}
+
+h1 {
+    font-family: var(--font);
+    color: white;
+    text-align: center;
+}
+
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    margin: 0 20%;
+    padding: 1rem 2rem;
+    width: 60%;
+    font-family: var(--font);
+}
+
+.target-color {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1rem;
+    width: 100%;
+    border: 2px solid black;
+    font-family: inherit;
+}
+
+.target, .select-color-type {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    outline: none;
+    padding: 5px 7px;
+    border-radius: 0.75rem;
+    color: rgb(44, 44, 44);
+}
+
+/* .select-color-type {
+
+} */
+
+.target-color > button {
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 1.25rem;
+    padding: 8px 10px;
+    margin-top: 1rem;
+    background-color: var(--color-blue);
+    color: white;
+    transition: all 0.2s;
+    transition-timing-function: ease-out;
+}
+
+.target-color > button:hover {
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+.main-wrapper > div > code {
+    font-size: 1rem;
+    background-color: rgba(147, 147, 147, 0.15);
+}
+
+.color-square {
+    margin: 1rem 0;
+    background-color: #00a4d6;
+    width: 3.5rem;
+    height: 3.5rem;
+}

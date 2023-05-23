@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>FilterConverter | Convert Any Image to Your Preferred Color</title>
+</head>
+<body>
+    <h1>Hex and RGB Colors to CSS Filter Converter</h1>
+    <main class="main-wrapper">
+        <form class="target-color">
+            <div>
+                <label>Target Color</label>
+                <input class="target" type="text" placeholder="Target hex color" value="#00a4d6">
+                <select class="select-color-type">
+                    <option value="rgb">RGB</option>
+                    <option value="hex">HEX</option>
+                </select>
+            </div>
+            <button class="perform-convertion">Compute Filters</button>
+        </form>
+        <div>Real Pixel - Color applied through CSS <code>background-color</code>:</div>
+        <div class="color-square actual"></div>
+        <div>Filtered Pixel - Color applied through CSS <code>filter</code>:</div>
+        <div class="color-square filtered"></div>
+        <div>
+            <div>Use CSS filter property on your desired element to change its color value:</div>
+            <code>
+                filter: invert(40%) sepia(84%) saturate(824%) hue-rotate(156deg) brightness(104%) contrast(101%);
+            </code>
+        </div>
+    </main>
+
+    <script src="script.ts"></script>
+
+</body>
+</html>
