@@ -50,3 +50,5 @@ class Color {
         return value;
     }
 }
+
+export {}
