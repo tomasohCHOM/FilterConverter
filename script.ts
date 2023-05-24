@@ -8,7 +8,7 @@ class Color {
         this.set(r, g, b);
     }
     toString() {
-        return `rgb(${Math.round(this.r)}, ${Math.round(this.g)}, ${Math.round(this.b)})`
+        return `rgb(${Math.round(this.r)}, ${Math.round(this.g)}, ${Math.round(this.b)})`;
     }
 
     set(r: number, g: number, b: number) {
@@ -155,7 +155,7 @@ class Solver {
         return this.spsa(A, a, c, wide.values, 500);
     }
 
-    spsa(A, a, c, values, iters) {
+    spsa(A: number, a: number[], c: number, values: number[], iters: number) {
         const alpha = 1;
         const gamma = 0.16666666666666666;
 
@@ -184,7 +184,7 @@ class Solver {
             if(loss < bestLoss) { best = values.slice(0); bestLoss = loss; }
         } return { values: best, loss: bestLoss };
 
-        function fix(value, idx) {
+        function fix(value: number, idx: number) {
             let max = 100;
             if(idx === 2 /* saturate */) { max = 7500; }
             else if(idx === 4 /* brightness */ || idx === 5 /* contrast */) { max = 200; }
@@ -198,7 +198,7 @@ class Solver {
         }
     }
 
-    loss(filters) { // Argument is array of percentages.
+    loss(filters: number[]) { // Argument is array of percentages.
         let color = this.reusedColor;
         color.set(0, 0, 0);
 
@@ -218,7 +218,7 @@ class Solver {
             + Math.abs(colorHSL.l - this.targetHSL.l);
     }
 
-    css(filters) {
+    css(filters: number[]) {
         function fmt(idx: number, multiplier = 1) { return Math.round(filters[idx] * multiplier); }
         return `filter: invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) 
                 hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%);`;
@@ -251,6 +251,9 @@ performConvertion.addEventListener("click", () => {
     const solver = new Solver(color);
     const result = solver.solve();
 
+    const actualPixel: HTMLElement = document.querySelector(".actual-pixel");
+    actualPixel.style.backgroundColor = color.toString();
+
     let lossMessage: string;
     let resultLoss: number = result.loss;
 
@@ -262,11 +265,13 @@ performConvertion.addEventListener("click", () => {
         lossMessage = "The color is somewhat off. Consider running it again.";
     else 
         lossMessage = "The color is extremely off. Run it again!";
-    
-    // document.querySelector(".actual-pixel").css('background-color', color.toString());
-    // document.querySelector("filtered-pixel").attr('style', result.filter);
-    // document.querySelector(".filter-detail").innerText = result.filter;
-    // document.querySelector("lossDetail").innerHTML = `Loss: ${result.loss.toFixed(1)}. <b>${lossMessage}</b>`;
+
+    const filteredPixel: HTMLElement = document.querySelector(".filtered-pixel");
+    filteredPixel.style.filter = result.filter;
+
+    const filterDetail: HTMLElement = document.querySelector(".filter-detail");
+    filterDetail.innerText = '' + result.loss;
+    document.querySelector(".loss-detail").innerHTML = `Loss: ${result.loss.toFixed(1)}. <b>${lossMessage}</b>`;
 });
 
 export {}

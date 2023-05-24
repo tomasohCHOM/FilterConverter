@@ -13,7 +13,7 @@
         <form class="target-color">
             <div>
                 <label>Target Color</label>
-                <input class="target" type="text" placeholder="Target hex color" value="#00a4d6">
+                <input class="target" type="text" placeholder="Target hex color">
                 <select class="select-color-type">
                     <option value="rgb">RGB</option>
                     <option value="hex">HEX</option>
@@ -30,11 +30,13 @@
             <code class="filter-detail">
                 filter: invert(40%) sepia(84%) saturate(824%) hue-rotate(156deg) brightness(104%) contrast(101%);
             </code>
+            <p class="loss-detail"></p>
         </div>
-        <div>Note: Your icon needs to be set to black for the <code>filter</code> to work. If you haven't set it to black already, you can prepend
+
+        <article>Note: Your icon needs to be set to black for the <code>filter</code> to work. If you haven't set it to black already, you can prepend
             <code>brightness(0) saturate(100%)</code> to your <code>filter</code> property for it to work appropriately.
-        </div>
-        <div>Special thanks to <a href="https://codepen.io/sosuke/pen/Pjoqqp">Barret Sonntag</a> for providing the solution on Codepen.</div>
+        </article>
+        <div>Credits go to <a href="https://codepen.io/sosuke/pen/Pjoqqp">Barret Sonntag</a> for providing the solution on Codepen.</div>
     </main>
 
     <script src="script.js"></script>
