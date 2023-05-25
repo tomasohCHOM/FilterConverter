@@ -18,6 +18,10 @@ body {
     margin: 0;
     background: rgb(6,210,156);
     background: linear-gradient(118deg, rgba(6,210,156,1) 11%, rgba(114,67,216,1) 81%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 h1 {
