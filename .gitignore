@@ -1,2 +1,2 @@
-# Ignore compiled js file
 /**/*.js
+node_modules
