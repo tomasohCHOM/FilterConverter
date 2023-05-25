@@ -84,6 +84,11 @@ h1 {
     background-color: rgba(147, 147, 147, 0.15);
 }
 
+.main-wrapper > div > p,
+.main-wrapper > article {
+    margin-bottom: 1rem;
+}
+
 .color-square {
     margin: 1rem 0;
     background-color: #000000;
