@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "module": "es6",
         "target": "ES5",
         "outDir": "ts-built",
         "rootDir": "script"

@@ -238,7 +238,7 @@ function hexToRgb(hex: string): number[] {
      ] : null;
 }
 
-const performConvertion: HTMLButtonElement = document.querySelector(".perform-convertion");
+const performConvertion = document.querySelector(".perform-convertion");
 const target: HTMLInputElement = document.querySelector(".target");
 
 performConvertion.addEventListener("click", () => {

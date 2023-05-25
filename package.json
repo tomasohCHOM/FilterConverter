@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "common-js": "^0.3.8",
     "typescript": "^5.0.4"
   },
   "scripts": {

@@ -19,7 +19,7 @@
                     <option value="hex">HEX</option>
                 </select>
             </div>
-            <button class="perform-convertion">Compute Filters</button>
+            <button type="button" class="perform-convertion">Compute Filters</button>
         </form>
         <div>Real Pixel - Color applied through CSS <code>background-color</code>:</div>
         <div class="color-square actual-pixel"></div>
@@ -36,10 +36,11 @@
         <article>Note: Your icon needs to be set to black for the <code>filter</code> to work. If you haven't set it to black already, you can prepend
             <code>brightness(0) saturate(100%)</code> to your <code>filter</code> property for it to work appropriately.
         </article>
-        <div>Credits go to <a href="https://codepen.io/sosuke/pen/Pjoqqp">Barret Sonntag</a> for providing the solution on Codepen.</div>
+        <div>Credits go to <a href="https://codepen.io/sosuke/pen/Pjoqqp">Barret Sonntag</a>, for providing the solution on Codepen, and
+            <a href="https://stackoverflow.com/a/43960991">MultiplyByZer0</a>, for providing the original solution over at StackOverflow.</div>
     </main>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 
 </body>
 </html>
