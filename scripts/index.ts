@@ -38,7 +38,6 @@ let isHexSelected = false;
 
 rgbOrHexSelection.addEventListener("change", ()=> {
     let selectedValue = rgbOrHexSelection.options[rgbOrHexSelection.selectedIndex].value;
-    console.log(selectedValue);
     isHexSelected = selectedValue === "hex";
     target.placeholder = isHexSelected ? (placeholders.hex) : (placeholders.rgb);
 });
@@ -52,14 +51,25 @@ performConvertion.addEventListener("click", () => {
         return;
     }
     const color = new Color(rgb[0], rgb[1], rgb[2]);
-    const solver = new Solver(color);
-    const result = solver.solve();
+    const oneSolver = new Solver(color);
+    const firstResult = oneSolver.solve();
+    let lowestLoss: number = firstResult.loss;
+    let bestResult;
+
+    for (let i = 0; i < 100; ++i) {
+        let solver = new Solver(color);
+        let result = solver.solve();
+        if (result.loss < lowestLoss) {
+            lowestLoss = result.loss;
+            bestResult = JSON.stringify(result);
+        }
+    }
 
     const actualPixel: HTMLElement = document.querySelector(".actual-pixel");
     actualPixel.style.backgroundColor = color.toString();
 
     let lossMessage: string;
-    let resultLoss: number = result.loss;
+    let resultLoss: number = lowestLoss;
 
     if (resultLoss < 1)
         lossMessage = "This is an almost perfect result.";
@@ -71,11 +81,11 @@ performConvertion.addEventListener("click", () => {
         lossMessage = "The color is extremely off. Run it again!";
 
     const filteredPixel: HTMLDivElement = document.querySelector(".filtered-pixel");
-    filteredPixel.style.filter = result.filterRaw;
+    filteredPixel.style.filter = JSON.parse(bestResult).filterRaw;
 
     const filterDetail: HTMLElement = document.querySelector(".filter-detail");
-    filterDetail.innerText = result.filter;
-    document.querySelector(".loss-detail").innerHTML = `Loss: ${result.loss.toFixed(1)}. <b>${lossMessage}</b>`;
+    filterDetail.innerText = JSON.parse(bestResult).filter;
+    document.querySelector(".loss-detail").innerHTML = `Loss: ${resultLoss.toFixed(1)}. <b>${lossMessage}</b>`;
 });
 
 // Toggle Sidebar On/Off
