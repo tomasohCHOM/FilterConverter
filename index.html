@@ -8,7 +8,19 @@
     <title>FilterConverter | Convert Any Image to Your Preferred Color</title>
 </head>
 <body>
-    <h1>Hex and RGB Colors to CSS Filter Converter</h1>
+    <header>
+        <a href="https://github.com/tomasohCHOM/FilterConverter">Github Repo</a>
+        <h1>Hex and RGB Colors to CSS Filter Converter</h1>
+        <button id="open-more-info" class="open-more-info">More Info</button>
+    </header>
+
+    <article class="more-info">
+        <button id="close-more-info">Close</button>
+        <div>Credits go to <a href="https://codepen.io/sosuke/pen/Pjoqqp">Barret Sonntag</a>, for providing the solution on Codepen, and
+            <a href="https://stackoverflow.com/a/43960991">MultiplyByZer0</a>, for providing the original solution over at StackOverflow.
+        </div>
+    </article>
+
     <main class="main-wrapper">
         <form id="target-color-form" class="target-color">
             <div>
@@ -34,8 +46,6 @@
         <div>Note: Your icon needs to be set to black for the <code>filter</code> to work. If you haven't set it to black already, you can prepend
             <code>brightness(0) saturate(100%)</code> to your <code>filter</code> property for it to work appropriately.
         </div>
-        <div>Credits go to <a href="https://codepen.io/sosuke/pen/Pjoqqp">Barret Sonntag</a>, for providing the solution on Codepen, and
-            <a href="https://stackoverflow.com/a/43960991">MultiplyByZer0</a>, for providing the original solution over at StackOverflow.</div>
     </main>
 
     <script type="module" src="scripts/index.js"></script>
