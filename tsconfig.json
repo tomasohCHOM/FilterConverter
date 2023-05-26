@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
-        "module": "es6",
-        "target": "ES5",
+        // "module": "CommonJS",
+        "target": "ES6",
         "outDir": "ts-built",
-        "rootDir": "script"
+        "rootDir": "script",
+        "moduleResolution": "node"
     }
 }
