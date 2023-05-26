@@ -83,14 +83,13 @@ h1 {
     transform: scale(1.05);
 }
 
-.main-wrapper > div > code,
-.main-wrapper > article > code {
+.main-wrapper > div > code {
     font-size: 1rem;
     background-color: rgba(147, 147, 147, 0.15);
 }
 
 .main-wrapper > div > p,
-.main-wrapper > article {
+.main-wrapper > div {
     margin-bottom: 1rem;
 }
 
