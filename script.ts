@@ -130,7 +130,8 @@ class Solver {
         return {
             values: result.values,
             loss: result.loss,
-            filter: this.css(result.values)
+            filter: this.css(result.values),
+            filterRaw: this.raw(result.values)
         };
     }
 
@@ -220,21 +221,24 @@ class Solver {
 
     css(filters: number[]) {
         function fmt(idx: number, multiplier = 1) { return Math.round(filters[idx] * multiplier); }
-        return `filter: invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) 
-                hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%);`;
+        return `filter: invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%);`;
+    }
+    raw(filters: number[]) {
+        function fmt(idx: number, multiplier = 1) { return Math.round(filters[idx] * multiplier); }
+        return `invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%)`;
     }
 }
 
 function hexToRgb(hex: string): number[] {
     const shortHandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    hex = hex.replace(shortHandRegex, (m, r: string, g: string, b: string) => {
+    hex = hex.replace(shortHandRegex, (m, r, g, b) => {
         return r + r + g + g + b + b;
     });
     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? [
         parseInt(result[1], 16),
         parseInt(result[2], 16),
-        parseInt(result[2], 16)
+        parseInt(result[3], 16)
      ] : null;
 }
 
@@ -266,12 +270,10 @@ performConvertion.addEventListener("click", () => {
     else 
         lossMessage = "The color is extremely off. Run it again!";
 
-    const filteredPixel: HTMLElement = document.querySelector(".filtered-pixel");
-    filteredPixel.style.filter = result.filter;
+    const filteredPixel: HTMLDivElement = document.querySelector(".filtered-pixel");
+    filteredPixel.style.filter = result.filterRaw;
 
     const filterDetail: HTMLElement = document.querySelector(".filter-detail");
-    filterDetail.innerText = '' + result.loss;
+    filterDetail.innerText = result.filter;
     document.querySelector(".loss-detail").innerHTML = `Loss: ${result.loss.toFixed(1)}. <b>${lossMessage}</b>`;
 });
-
-export {}
