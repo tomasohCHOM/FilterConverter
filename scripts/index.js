@@ -20,7 +20,14 @@ function RgbToArray(rgb) {
     //     parseInt(rgbArray[2]),
     //     parseInt(rgbArray[3])
     // ] : null;
-    return rgb.match(/\d+/g).map(Number);
+    // if (rgb == null || rgb === "") return null;
+    // return rgb.match(/\d+/g).map(Number);
+    let match = rgb.match(/rgba?\((\d{1,3}), ?(\d{1,3}), ?(\d{1,3})\)?(?:, ?(\d(?:\.\d?))\))?/);
+    return match ? [
+        parseInt(match[1]),
+        parseInt(match[2]),
+        parseInt(match[3])
+    ] : null;
 }
 const performConvertion = document.querySelector(".perform-convertion");
 const target = document.querySelector(".target");
